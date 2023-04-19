@@ -17,5 +17,5 @@ after_success:
  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
  - docker push frestomartvn/udagram-api-feed
  - docker push frestomartvn/udagram-api-user
- - docker push restomartvn/udagram-frontend
+ - docker push frestomartvn/udagram-frontend
  - docker push frestomartvn/reverseproxy
