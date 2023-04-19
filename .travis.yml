@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+ - 16
+
+services:
+ - docker
+
+build: 
+ - docker-compose -f docker-compose-build.yaml build --parallel
+
+script:
+ - docker --version # print the version for logging
+ - docker tag udagram-api-feed frestomartvn/udagram-api-feed:latest
+ - docker tag udagram-api-user frestomartvn/udagram-api-user:latest
+ - docker tag udagram-frontend frestomartvn/udagram-frontend:latest
+ - docker tag reverseproxy frestomartvn/reverseproxy:latest
+
+after_success:
+ - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+ - docker push frestomartvn/udagram-api-feed
+ - docker push frestomartvn/udagram-api-user
+ - docker push restomartvn/udagram-frontend
+ - docker push frestomartvn/reverseproxy
