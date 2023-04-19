@@ -5,11 +5,9 @@ node_js:
 services:
  - docker
 
-build: 
- - docker-compose -f docker-compose-build.yaml build --parallel
-
 script:
  - docker --version # print the version for logging
+ - docker-compose -f docker-compose-build.yaml build --parallel
  - docker tag udagram-api-feed frestomartvn/udagram-api-feed:latest
  - docker tag udagram-api-user frestomartvn/udagram-api-user:latest
  - docker tag udagram-frontend frestomartvn/udagram-frontend:latest
