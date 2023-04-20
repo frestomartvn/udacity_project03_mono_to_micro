@@ -19,7 +19,7 @@ spec:
       containers:
       - image: frestomartvn/udagram-frontend:latest
         name: udagram-frontend
-        imagePullPolicy: Always 
-        ports:               
+        imagePullPolicy: Always
+        ports:   
         - containerPort: 80             
       restartPolicy: Always
