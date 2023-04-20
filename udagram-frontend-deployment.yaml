@@ -20,6 +20,6 @@ spec:
       - image: frestomartvn/udagram-frontend:latest
         name: udagram-frontend
         imagePullPolicy: Always
-        ports:                
+        ports:   
         - containerPort: 80             
       restartPolicy: Always
