@@ -23,10 +23,10 @@ spec:
               cpu: 250m
             limits:            
               cpu: 500m
-          envFrom:
-            - secretRef:
-                name: env-secret
-            - configMapRef:
-                name: config-secret
-          ports: 
-            - containerPort: 8080
+        envFrom:
+          - secretRef:
+              name: env-secret
+          - configMapRef:
+              name: config-secret
+        ports: 
+          - containerPort: 8080
