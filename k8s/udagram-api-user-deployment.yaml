@@ -2,20 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: udagram-api-user
-  name: udagram-api-user
+    app: backend-user
+  name: backend-user
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      service: udagram-api-user
+      app: backend-user
   template:
     metadata:
       labels:
-        service: udagram-api-user
+        app: backend-user
     spec:
       containers:
-      - name: udagram-api-user
+      - name: backend-user
         image: frestomartvn/udagram-api-user:latest
         imagePullPolicy: Always 
         resources:
@@ -27,6 +27,6 @@ spec:
           - secretRef:
               name: env-secret
           - configMapRef:
-              name: config-secret
+              name: env-config
         ports: 
           - containerPort: 8080
