@@ -2,28 +2,30 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: udagram-frontend
-  name: udagram-frontend
+    service: frontend
+  name: frontend
 spec:
-  replicas: 2
   selector:
     matchLabels:
-      service: udagram-frontend
-      api: external
+      app: frontend
+  replicas: 2
   template:
     metadata:
       labels:
-        service: udagram-frontend
+        service: frontend
         api: external
+        app: frontend
     spec:
       containers:
-      - image: frestomartvn/udagram-frontend:latest
-        name: udagram-frontend
-        imagePullPolicy: Always
-        ports:   
-        - containerPort: 80             
-        resources:
-          limits:
-            cpu: 500m
-          requests:
-            cpu: 200m
+        - image: frestomartvn/udagram-frontend
+          name: frontend
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "2048Mi"
+              cpu: "500m"
