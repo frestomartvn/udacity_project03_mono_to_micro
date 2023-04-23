@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user
+  name: backend-user
   labels:
-    app: user
+    app: backend-user
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: user
+      app: backend-user
   template:
     metadata:
       labels:
-        service: user
-        app: user
+        service: backend-user
+        app: backend-user
     spec:
       containers:
       - image: frestomartvn/udagram-api-user
-        name: api-user
+        name: backend-user
         imagePullPolicy: Always          
         resources:
           requests:
